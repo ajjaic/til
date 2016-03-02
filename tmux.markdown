@@ -1,3 +1,13 @@
+# Maximize a Window Pane
+
+You can maxmize a window pane by using moving to that pane and then using the
+shortcut `<prefix>z`
+
+# Rename Window in Current Session
+
+To rename a window in the current session, goto that window and use
+`<prefix>,`
+
 # Fixing Wonky Colors
 
 If a vim session inside a tmux window shows wonky colors then it might help to
@@ -132,21 +142,27 @@ to open a new window with your home directory.
 
 # Organizing Windows
 
-If you use a number of tmux windows as part of your daily workflow, you may find that they get to be a bit of a mess from time to time. There are gaps in the numbering and they aren't laid out in the order you'd prefer. The `movew` command makes it easy to rearrange these windows.
+If you use a number of tmux windows as part of your daily workflow, you may
+find that they get to be a bit of a mess from time to time. There are gaps in
+the numbering and they aren't laid out in the order you'd prefer. The `movew`
+command makes it easy to rearrange these windows.
 
-If you have a window indexed at 2 and you want it to be the 4th window, then you can:
+If you have a window indexed at 2 and you want it to be the 4th window, then
+you can:
 
 ```
 :movew -s 2 -t 4
 ```
 
-If you have a gap such that the 4th and 5th windows are numbered 4 and 7, then you can focus the 7 window and simply invoke:
+If you have a gap such that the 4th and 5th windows are numbered 4 and 7, then
+you can focus the 7 window and simply invoke:
 
 ```
 :movew
 ```
 
-And that window will be reinserted at the next available slot, in this case, window 5.
+And that window will be reinserted at the next available slot, in this case,
+window 5.
 
 # Paging Up And Down
 
@@ -201,8 +217,6 @@ name, you can open a prompt to change it by hitting
 ```
 
 Replace the existing name with the desired name and hit enter.
-
-h/t Dorian Karter
 
 # Swap Split Panes
 
