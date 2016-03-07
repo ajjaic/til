@@ -1,23 +1,26 @@
-
+# Creating a PFsense VM
 While installing pfsense, you  must decide what kind of network you want.
 
 * DMZ (WAN ACCESS SITES)
 * LAN ACCESS SITES
 * PROXMOX MANAGEMENT
 
-Network configuration
+## Network configuration
+The following needs to be done in the /etc/network/interfaces file
 
-* The following needs to be done in the /etc/network/interfaces file
 * Create the physical interfaces (eth#)
 * Create the virtual machine bridges (vmbr#). The vmbr# interfaces are like physical network switches implemented in software on the Proxmox VE host. All VMs can share one bridge as if virtual network cables from each guest were all plugged into the same switch
 
-Interface options
-* auto <interface> - starts the interface at boot time
-* inet - interface is IPv4
-* inet6 - interface is IPv6
-* static - static IPv4 address
-* manual - do not define IP address for this interface. it will be used as slave for other network options
-* dhcp - acquire IP address via dhcp protocol
+## Interface options
+
+* **auto** <interface> - starts the interface at boot time
+* **inet** - interface is IPv4
+* **inet6** - interface is IPv6
+* **static** - static IPv4 address
+* **manual** - do not define IP address for this interface. it will be used as slave for other network options
+* **dhcp** - acquire IP address via dhcp protocol
+
+## Examples
 
 ```
 auto eth0
