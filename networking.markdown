@@ -38,3 +38,20 @@ network.
 
 When a router receives an IP packet it looks at the IP address to determine the
 network to which the packet needs to be routed to.
+
+# Cat5, Cat6 Ethernet cables
+
+* Cat5 is obsolete
+* Older standard
+* Max Speed 100 Mbps
+* Bandwidth 100 Mhz
+
+* Cat5e is more modern
+* `e` stands for **enhanced**
+* Reduces crosstalk
+* Can handle higher speeds
+
+* Cat6 are more faster
+* Snagless is better than non-Snagless
+* Better isolation for more reduction in crosstalk
+
