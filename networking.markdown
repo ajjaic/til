@@ -66,7 +66,11 @@ network to which the packet needs to be routed to.
 
 # HTTP Cookies
 
-There are a few types of cookies
+Cookies are primarily a way for web servers to introduce **state** into a
+stateless protocol like HTTP(S). This helps webservers to maintain state
+info about a client as the client requests different resources from the sesrver.
+
+There are a few types of cookies..
 
 ## Session cookie
 * It's a in-memory cookie. Exists only as long as user navigates website.
