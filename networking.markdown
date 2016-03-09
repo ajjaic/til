@@ -69,6 +69,7 @@ network to which the packet needs to be routed to.
 Cookies are primarily a way for web servers to introduce **state** into a
 stateless protocol like HTTP(S). This helps webservers to maintain state
 info about a client as the client requests different resources from the sesrver.
+A cookie can be set using the `Set-Cookie` HTTP header attribute.
 
 There are a few types of cookies..
 
@@ -85,9 +86,10 @@ in the domain attribute, every time user visits it.
 
 ##Secure cookie
 * These cookies are only transmitted via HTTPS connections.
-* If `secure` flag is set, then this cookie can only be transmitted securely
+* If `secure` flag attribute is set, then this cookie can only be transmitted
+securely (via HTTPS)
 
-## HTTP-only cookie
+## HTTP(S)-only cookie
 * Can only be transmitted via HTTP or HTTPS.
 * Ajax calls via Javascript will not transmit this cookie
 
