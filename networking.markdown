@@ -55,3 +55,37 @@ network to which the packet needs to be routed to.
 * Snagless is better than non-Snagless
 * Better isolation for more reduction in crosstalk
 
+# HTTP Cookies
+
+There are a few types of cookies
+
+* Session cookie
+  * It's a in-memory cookie. Exists only as long as user navigates website.
+  * These cookies are deleted when browser is closed.
+  * Since they don't have expiration dates, the browser recognizes them as
+  session cookies
+* Persistent Cookie
+  * Unlike session cookies, these have expiration dates.
+  * Until the cookie expires, the cookie is transmitted to the domain specified
+  in the domain attribute, every time user visits it.
+* Secure cookie
+  * These cookies are only transmitted via HTTPS connections.
+  * If `secure` flag is set, then this cookie can only be transmitted securely
+* HTTP-only cookie
+  * Can only be transmitted via HTTP or HTTPS.
+  * Ajax calls via Javascript will not transmit this cookie
+* Third-party cookie
+  * If the domain attribute in the cookie is different compared to the domain
+  in the address bar, then this is a 3rd party cookie.
+* Super cookie
+  * A super cookie has a TLD (like .com) as value for its domain attribute
+  * Usually they are blocked by brower
+  * Such cookies will be transmitted to any domain with the same TLD
+* Zombie cookie
+  * Cookies that persist inspite of being manually deleted.
+  * This is done by some client side script that recreates the cookie from info
+  stored in multiple locations like Flash local storage, html5 storage or other
+  client-side storage locations.
+
+
+
