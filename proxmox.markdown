@@ -5,7 +5,7 @@
 * VM hard disk Images `/var/lib/vz/images`
 * LXC container templates `/var/lib/vz/template/cache`
 
-# Creating a PFsense VM in Proxmox
+# An example of a good network topology
 While installing pfsense, you  must first decide what kind of network topology
 you want.
 
@@ -13,13 +13,25 @@ you want.
 
 ![Network topology](file:///home/adas/Documents/til/resources/matt-abr01-img03.png "Network Topology")
 
-## Creating the required network interfaces
-The following needs to be done in the /etc/network/interfaces file
+# Network Interface file
+To manually create or edit new network interfaces on proxmox or any unix system,
+the following file should be edited
 
-* Create the physical interfaces (eth#)
-* Create the virtual machine bridges (vmbr#). The vmbr# interfaces are like physical network switches implemented in software on the Proxmox VE host. All VMs can share one bridge as if virtual network cables from each guest were all plugged into the same switch
+```bash
+$ /etc/network/interfaces file
+```
+# Creating a new network interface
 
-## Interface options
+Every interface starts with an interface definition followed by interface
+options.
+
+* **eth#** (eg: eth0, eth1, eth2) are examples of physical ethernet interfaces
+* **vmbr#** (eg: vmbr0, vmbr1, vmbr2) are examples of virtual machine bridges
+  * The vmbr# interfaces are like physical network switches implemented in
+    software on the Proxmox VE host. All VMs can share one bridge as if virtual
+    network cables from each guest were all plugged into the same switch
+
+## A few interface options
 
 * **auto** <interface> - starts the interface at boot time
 * **inet** - interface is IPv4
@@ -27,6 +39,8 @@ The following needs to be done in the /etc/network/interfaces file
 * **static** - static IPv4 address
 * **manual** - do not define IP address for this interface. it will be used as slave for other network options
 * **dhcp** - acquire IP address via dhcp protocol
+
+For more info visit the [debian wiki](https://wiki.debian.org/NetworkConfiguration#Setting_up_an_Ethernet_Interface) about setting up an ethernet interface
 
 ## Examples
 
@@ -87,4 +101,3 @@ iface vmbr0 inet static
 * Same as above except this virtual bridge is not attached to any physical interface (`bridge_ports none`)
 * This allows you to create internal subnets that exist only within the host
 
-For more [info](https://wiki.debian.org/NetworkConfiguration#Setting_up_an_Ethernet_Interface)
