@@ -22,6 +22,33 @@ Creates MyFeature branch off dev.
 $ git merge --no-ff myFeature
 ```
 
+# Fast-forward Merge
+In a fast-forward merge, if the branch being merged has all the changes of the
+branch being merged to, then the merging branch and the branch receiving the
+the merge will be merged linearly.
+
+```
+   | (commit 3)
+   | (commit 2)
+   / feature (new branch forked off of master. commit 1)
+  |
+  |
+master
+```
+
+In the above state, the feature branch is ready to be merged into master, but
+since there have been no changes to the master branch, the merge is done
+linearly and the new state becomes
+
+```
+master
+  | (commit 3)
+  | (commit 2)
+  | feature (branch merged into master linearly. commit 1)
+  |
+  |
+```
+
 # Accessing A Lost Commit
 
 If you have lost track of a recent commit (perhaps you did a reset), you
