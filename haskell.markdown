@@ -78,7 +78,6 @@ moved to the kind level. And `Nat` can be used wherever kinds can be used.
 
 In other words, all the suitable terms have been promoted one level higher.
 
-
 # Monomorphic Restriction
 For example, in the code
 
