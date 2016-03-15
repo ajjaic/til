@@ -36,6 +36,49 @@ the methods in an instance definition
   good practice for business logic libraries, it makes it easier to locate the
   source of symbol definitions.
 
+# Values with Types with Kinds with Sorts
+
+In Haskell, all values have a type. For example,
+
+```haskell
+intnum :: Int
+intnum = 3
+```
+
+The `Int` above has **Kind** `*`. In other words it is a fully applied type.
+
+Now consider,
+
+```haskell
+data Either a b = Left a | Right b
+```
+
+`Either` has kind `Either -> * -> * -> *`. Meaning it takes two more types, to
+return a fully applied type. So basically, `Either` is a type constructor that
+takes two types as parameters and returns a new type. This is just a function at
+the type level.
+
+> With -XDataKinds, GHC automatically promotes every suitable datatype to be a
+> kind, and its (value) constructors to be type constructors.
+
+What that means is that, if we have a type like so,
+
+```haskell
+data Nat = Ze | Su Nat
+```
+
+then `DataKinds` gives us the following.
+
+* Nat is promoted to a Kind
+* Ze and Su are promoted to types
+
+In other words, the `Ze` and `Su Nat` that existed at the value level have now
+moved to the type level. And `Nat` which existed at the type level has now
+moved to the kind level. And `Nat` can be used wherever kinds can be used.
+
+In other words, all the suitable terms have been promoted one level higher.
+
+
 # Monomorphic Restriction
 For example, in the code
 

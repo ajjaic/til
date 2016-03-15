@@ -1,11 +1,19 @@
-# Creating a PFsense VM
-While installing pfsense, you  must decide what kind of network you want.
+# Proxmox
 
-* DMZ (WAN ACCESS SITES)
-* LAN ACCESS SITES
-* PROXMOX MANAGEMENT
+* Backups `/var/lib/vz/dump`
+* VM installation ISOs `/var/lib/vz/template/iso`
+* VM hard disk Images `/var/lib/vz/images`
+* LXC container templates `/var/lib/vz/template/cache`
 
-## Network configuration
+# Creating a PFsense VM in Proxmox
+While installing pfsense, you  must first decide what kind of network topology
+you want.
+
+**Example:**
+
+![Network topology](file:///home/adas/Documents/til/resources/matt-abr01-img03.png "Network Topology")
+
+## Creating the required network interfaces
 The following needs to be done in the /etc/network/interfaces file
 
 * Create the physical interfaces (eth#)
@@ -78,7 +86,5 @@ iface vmbr0 inet static
 ```
 * Same as above except this virtual bridge is not attached to any physical interface (`bridge_ports none`)
 * This allows you to create internal subnets that exist only within the host
-
-
 
 For more [info](https://wiki.debian.org/NetworkConfiguration#Setting_up_an_Ethernet_Interface)
