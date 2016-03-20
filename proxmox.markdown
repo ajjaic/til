@@ -101,3 +101,46 @@ iface vmbr0 inet static
 * Same as above except this virtual bridge is not attached to any physical interface (`bridge_ports none`)
 * This allows you to create internal subnets that exist only within the host
 
+# Proxmox update repos
+
+Proxmox has 2 repos. Enterprise (paid) and Non-Enterprise (free).
+If you have a subscription you can access the enterprise repos at,
+
+Subscription repo
+```
+$ cat /etc/apt/sources.list.d/pve-enterprise.list
+deb https://enterprise.proxmox.com/debian jessie pve-enterprise
+```
+
+Non-Subscription repo
+```
+$ cat /etc/apt/sources.list
+deb http://ftp.debian.org/debian jessie main contrib
+
+# PVE pve-no-subscription repository provided by proxmox.com, NOT recommended for production use
+deb http://download.proxmox.com/debian jessie pve-no-subscription
+
+# security updates
+deb http://security.debian.org/ jessie/updates main contrib
+```
+
+If you are using Non-Subscription repo, you can prevent error messages from
+accessing the enterprise repo, by commenting the line in `/etc/apt/sources.list.d/pve-enterprise.list`
+
+For more [info](https://pve.proxmox.com/wiki/Package_repositories)
+
+# Performance settings for KVMs
+
+* Hard Disk
+  * Virtio for hard disk can be used if the VM is read/write heavy
+  * RAW VM image format is performant for hard disk images and good if
+    read/write heavy. But the RAW VM file occupies the entire storage
+    at the moment of creation.
+  * If using RAW VM format, then its cache should be none.
+  * qcow2 has snapshot capability and file size grows dynamically
+
+
+* NIC
+  * Virtio for NICs can be used if the VM is network heavy
+
+# Steps for creating a pfsense VM in Proxmox
