@@ -31,7 +31,7 @@ the methods in an instance definition
 # Best practices
 * With Haskell, because of its type system refactoring is a breeze. So when
   writing code, always get a quick, dirty version that simply works. And then
-  refactor to hearts content.
+  refactor to hearts content. Quantity triumphs any initial attempts at quality.
 * Prefer to import libraries as qualified. Typically this is just considered
   good practice for business logic libraries, it makes it easier to locate the
   source of symbol definitions.
