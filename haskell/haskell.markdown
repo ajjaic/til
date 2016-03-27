@@ -4,21 +4,30 @@
 as ByteString, Text, String or any string like Type
 * `{-# LANGUAGE EmptyDataDecls #-}` - Allows defining Types with no Constructors
 * `{-# LANGUAGE ScopedTypeVariables #-}` - Allows reusing type variables from
-the parent signature in the type signatures for any local definition or in the
-annotations of any local binding
+  the parent signature in the type signatures for any local definition or in the
+  annotations of any local binding
 * `{-# LANGUAGE DeriveFunctor #-}` - Derives Functors for types of Kind
-`(* -> *)`
+  `(* -> *)`
 * `{-# LANGUAGE DeriveFoldable #-}` - Derives Foldable
 * `{-# LANGUAGE DeriveTraversable #-}` - Derives Traversable
 * `{-# LANGUAGE DeriveGeneric #-}` - Based on GHC.Generics for deriving classes
- not in Base
+   not in Base
 * `{-# LANGUAGE FlexibleInstances #-}` - Without it you cannot do `instance
-TypeClass (Maybe Int) where`
+  TypeClass (Maybe Int) where`
 * `{-# LANGUAGE InstanceSigs #-}` - Allows one to write type signatures for
-the methods in an instance definition
+  the methods in an instance definition
+* `{-# LANGUAGE NoImplicitPrelude #-}` - Do not implicitly import the default
+  Prelude module
+* `{-# LANGUAGE OverloadedLists #-}`
 * `{-# LANGUAGE NoMonomorphismRestriction #-}`
 * `{-# LANGUAGE DeriveAnyClass #-}` -
 * `{-# LANGUAGE GADTs #-}` -
+
+* Extensions to use in every file
+  * `{-# LANGUAGE OverloadedStrings #-}`
+  * `{-# LANGUAGE EmptyDataDecls #-}`
+  * `{-# LANGUAGE ScopedTypeVariables #-}`
+  * `{-# LANGUAGE NoImplicitPrelude #-}`
 
 [Other Extensions](https://www.reddit.com/r/haskell/comments/2z248l/language_extensions/)
 
