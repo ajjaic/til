@@ -13,10 +13,6 @@ Making a GET request to "/events/:id" will capture the id part, convert it to an
 Int and send it as argument to the handler. In return you will get an `Event`
 type in JSON format
 
-```haskell
-type API = "share" :> QueryParams "network" String :> Get [HTML] String
-```
-???
 
 ```haskell
 type API = Header "Cookie" String :> "auth" :> Get [HTML] String

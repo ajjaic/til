@@ -16,12 +16,16 @@ annotations of any local binding
 TypeClass (Maybe Int) where`
 * `{-# LANGUAGE InstanceSigs #-}` - Allows one to write type signatures for
 the methods in an instance definition
+* `{-# LANGUAGE DataKinds #-}` - GHC automatically promotes every suitable
+datatype to be a kind, and its (value) constructors to be type constructors.
+* `{-# LANGUAGE StandaloneDeriving #-}` - Using this allows one to derive
+instances for types defined in other modules with `instance Show a => Show
+(List a)`
 * `{-# LANGUAGE NoMonomorphismRestriction #-}`
 * `{-# LANGUAGE DeriveAnyClass #-}` -
 * `{-# LANGUAGE GADTs #-}` -
 
-[Other Extensions](https://www.reddit.com/r/haskell/comments/2z248l/language_extensions/)
-
+[Other Extensions](https://www.reddit.com/r/haskell/comments/2z248l/language_extensions/),
 [Extensions that are good, bad and ugly](https://stackoverflow.com/questions/10845179/which-haskell-ghc-extensions-should-users-use-avoid?lq=1)
 
 # Learning Titbits
