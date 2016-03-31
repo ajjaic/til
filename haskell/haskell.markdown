@@ -1,34 +1,47 @@
 # Extensions
 
-* `{-# LANGUAGE OverloadedStrings #-}` - Allows string literals to be inferred
-  as ByteString, Text, String or any string like Type
-* `{-# LANGUAGE OverloadedLists #-}` - Allows list literals to be inferred as
-  Set, IntSet
-* `{-# LANGUAGE EmptyDataDecls #-}` - Allows defining Types with no Constructors
-* `{-# LANGUAGE ScopedTypeVariables #-}` - Allows reusing type variables from
-  the parent signature in the type signatures for any local definition or in the
-  annotations of any local binding
-* `{-# LANGUAGE DeriveFunctor #-}` - Derives Functors for datatypes
-* `{-# LANGUAGE DeriveFoldable #-}` - Derives Foldable for datatypes
-* `{-# LANGUAGE DeriveTraversable #-}` - Derives Traversable for datatypes
-* `{-# LANGUAGE DeriveGeneric #-}` - Based on GHC.Generics for deriving classes
-   not in Base. Can be used by `import GHC.Generics`
-* `{-# LANGUAGE FlexibleInstances #-}` - Without it you cannot do `instance
-  TypeClass (Maybe Int) where`
-* `{-# LANGUAGE InstanceSigs #-}` - Allows one to write type signatures for
-  the methods in an instance definition
-* `{-# LANGUAGE DataKinds #-}` - GHC automatically promotes every suitable
-  datatype to be a kind, and its (value) constructors to be type constructors.
-* `{-# LANGUAGE StandaloneDeriving #-}` - Using this allows one to derive
-  instances for types defined in other modules with `instance Show a => Show
-  (List a)`
-* `{-# LANGUAGE NoImplicitPrelude #-}` - Do not implicitly import the default
-  Prelude module
-* `{-# LANGUAGE GeneralizedNewtypeDeriving #-}` -
-* `{-# LANGUAGE DeriveDataTypeable #-}` -
-* `{-# LANGUAGE NoMonomorphismRestriction #-}` -
-* `{-# LANGUAGE DeriveAnyClass #-}` -
-* `{-# LANGUAGE GADTs #-}` -
+* `{-# LANGUAGE OverloadedStrings #-}`
+  * Allows string literals to be inferred as ByteString, Text, String or any
+    string like Type
+* `{-# LANGUAGE OverloadedLists #-}`
+  * Allows list literals to be inferred as Set, IntSet
+* `{-# LANGUAGE EmptyDataDecls #-}`
+  * Allows defining Types with no Constructors
+* `{-# LANGUAGE ScopedTypeVariables #-}`
+  * Allows reusing type variables from the parent signature in the type
+    signatures for any local definition or in the annotations of any local
+    binding
+* `{-# LANGUAGE DeriveFunctor #-}`
+  * Derives Functors for datatypes
+* `{-# LANGUAGE DeriveFoldable #-}`
+  * Derives Foldable for datatypes
+* `{-# LANGUAGE DeriveTraversable #-}`
+  * Derives Traversable for datatypes
+* `{-# LANGUAGE DeriveGeneric #-}`
+  * Based on GHC.Generics for deriving classes not in Base. Can be used by
+    `import GHC.Generics`
+* `{-# LANGUAGE FlexibleInstances #-}`
+  * Without it you cannot do `instance TypeClass (Maybe Int) where`
+* `{-# LANGUAGE InstanceSigs #-}`
+  * Allows one to write type signatures for the methods in an instance
+    definition
+* `{-# LANGUAGE DataKinds #-}`
+  * GHC automatically promotes every suitable datatype to be a kind, and its
+    (value) constructors to be type constructors.
+* `{-# LANGUAGE StandaloneDeriving #-}`
+  * Using this allows one to derive instances for types defined in other
+    modules with `instance Show a => Show (List a)`
+* `{-# LANGUAGE NoImplicitPrelude #-}`
+  * Do not implicitly import the default Prelude module
+* `{-# LANGUAGE GeneralizedNewtypeDeriving #-}`
+  *
+* `{-# LANGUAGE DeriveDataTypeable #-}`
+  *
+* `{-# LANGUAGE NoMonomorphismRestriction #-}`
+  *
+* `{-# LANGUAGE DeriveAnyClass #-}`
+  *
+* `{-# LANGUAGE GADTs #-}`
 
 * Extensions to use in every file
   * `{-# LANGUAGE OverloadedLists #-}`
