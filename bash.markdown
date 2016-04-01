@@ -1,6 +1,7 @@
 # Directional Commands
 
-You can move the cursor without arrow keys. Here is the keyboard equivalent for each.
+You can move the cursor without arrow keys. Here is the keyboard equivalent for
+each.
 
 * Up ('previous'): `CTRL + P`
 * Down ('next'): `CTRL + N`
@@ -8,6 +9,7 @@ You can move the cursor without arrow keys. Here is the keyboard equivalent for 
 * Right ('forward'): `CTRL + F`
 
 Mapping `caps lock` to `CTRL` makes these combinations very accessible.
+
 # Finding Getters
 
 After writing the other day about why you [might not want to use simple getters](http://til.hashrocket.com/posts/7d6b8eb8d3-accessor-performance-gap), I decided that I wanted to eliminate all such methods from a project.
@@ -18,10 +20,14 @@ Here is the regex I wrote to isolate the pattern:
 ag 'def (\w+);?\s+@\1;?\s+end'
 ```
 
-The semicolon catches one-line getter methods as well as the more common three-line.
+The semicolon catches one-line getter methods as well as the more common three-
+line.
+
 # MD5 File Signatures
 
-The command `md5 <file>` generates a unique 32-digit hexadecimal number. This can serve as a signature for a file in its particular state, letting you know when it has changed.
+The command `md5 <file>` generates a unique 32-digit hexadecimal number. This
+can serve as a signature for a file in its particular state, letting you know
+when it has changed.
 
 Example usage:
 
@@ -35,7 +41,8 @@ $ md5 test.txt
 ```
 # Printing with lpr
 
-Recently while trying to fix a printer I used `lpr` a bunch of times. It's not exactly new to me, but never fails to surprise people when I use it.
+Recently while trying to fix a printer I used `lpr` a bunch of times. It's not
+exactly new to me, but never fails to surprise people when I use it.
 
 `lpr` submits files for printing to your default printer in OSX.
 
@@ -91,7 +98,8 @@ $ !10048
 Already on 'master'
 ```
 
-The command `!!` prints the last command you ran, then runs it. Here is an example:
+The command `!!` prints the last command you ran, then runs it. Here is an
+example:
 
 ```shell
 $ ls
@@ -110,14 +118,20 @@ rspec spec/models/user.rb
 ```
 # Screen Flashing in OSX
 
-I like a quiet computer. But I also like tab-completing commands in the terminal, which produces a necessary alert from time to time.
+I like a quiet computer. But I also like tab-completing commands in the
+terminal, which produces a necessary alert from time to time.
 
-A solution I found today is to use OSX Accessibility features to add a screen flash on alerts, then disable the sounds.
+A solution I found today is to use OSX Accessibility features to add a screen
+flash on alerts, then disable the sounds.
 
-System Preferences > Accessibility > Hearing menu, choose 'Audio' > Check 'Flash the screen when an alert occurs'
+System Preferences > Accessibility > Hearing menu, choose 'Audio' > Check '
+Flash the screen when an alert occurs'
+
 # Send Processes to the Background
 
-Processes on any POSIX-compliant computer can be sent to the background with `CTRL-Z` (`<prefix> + Z` for the tmux-ers) and returned to the foreground with `fg`.
+Processes on any POSIX-compliant computer can be sent to the background with
+`CTRL-Z` (`<prefix> + Z` for the tmux-ers) and returned to the foreground with
+`fg`.
 
 Here is an example:
 
@@ -165,10 +179,14 @@ vendor
 ```
 # Watch That Program
 
-Have you ever been working in the terminal and found yourself repeating the same command many times? Delegate that work to the computer.
+Have you ever been working in the terminal and found yourself repeating the
+same command many times? Delegate that work to the computer.
 
-`watch` comes with Linux and can be installed on OSX via homebrew. It executes a program periodically, defaulting to every two seconds.
+`watch` comes with Linux and can be installed on OSX via homebrew. It executes
+a program periodically, defaulting to every two seconds.
 
-We used it today while writing a database backup script. Instead of checking our dump directory every time a cron job executed, we ran `watch ls`, and watched the script succeed or fail with live updates.
+We used it today while writing a database backup script. Instead of checking
+our dump directory every time a cron job executed, we ran `watch ls`, and
+watched the script succeed or fail with live updates.
 
 `man watch` for more information.
