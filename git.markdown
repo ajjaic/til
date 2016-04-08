@@ -41,7 +41,7 @@ since there have been no changes to the master branch, the merge is done
 linearly and the new state becomes
 
 ```
-master
+    master
   | (commit 3)
   | (commit 2)
   | feature (branch merged into master linearly. commit 1)
@@ -464,14 +464,11 @@ branch.
 
 # Creating a new local copy of a branch in a remote repository
 
-Say there is a remote branch that you want to track locally, then you can first
-checkout the develop branch, download all commits in the develop branch and then
-create a new branch forking from develop and then merge the remote branch that you
-want to track into your new branch
+Say there is a remote branch that you want to track locally, then checkout a new
+branch with same name as remote branch and then pull the remote branch with same
+name locally
 
 ```bash
-$ git checkout develop
-$ git pull
 $ git checkout <branch-name-in-remote-you-want-to-copy>
 $ git pull <remote-repo-name> <branch-name-in-remote-you-want-to-copy>
 ```
