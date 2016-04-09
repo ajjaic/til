@@ -1,4 +1,114 @@
-# Aliasing An Ansible Host 
+# Common networking Acronyms
+
+* `WAN` - Wide Area Network. Also known as the internet.
+* `LAN` - Local Area Network. Your internal network, also known as your domain
+or your intranet.
+* `OPT` - Optional networks
+* `DMZ` - De-Militarized Zone. A fancy name for just another type of internal
+network just like your LAN. The difference is, using firewall rules you prevent
+any traffic that comes into your DMZ subnet from going to your LAN subnet, for
+security purposes. This is where you would host a web server or FTP server, a
+place where anyone on the internet can access certain things without having
+access to your private LAN devices.
+* `DHCP` - A type of service that automatically hands out IP addresses. Many types
+ of network devices are configurable as DHCP servers.
+* `WAP` - Wireless Access Point.  Essentially, a wireless switch.
+* `NIC` - Network Interface Card.
+
+WAN, LAN, DMZ and OPT are just cannonical names for networks that perform a
+certain function
+
+# Router, Switch, Wireless Access Points
+## Router
+* Routers connect networks.
+* Routers route **IP packets** between different networks.
+* They works at the IP layer (Level 3)
+
+## Switch
+* Switches create networks
+* Switches work at the MAC level (close to hardware level, level 2)
+* Switches route **ethernet frames** between different devices on the same
+network
+
+## Wireless AP
+* Wireless AP (aka wireless switch) is simply a wireless switch.
+* The physical interface that clients have with a wireless AP the only
+difference between a switch and a wireless AP
+
+Whenever an ethernet frame reaches the Switch it detects if the MAC address on
+the frame is destined for a MAC address that the switch knows about. If the
+switch encountered that MAC address before then it will direct the frame to
+the right port on the switch. But if the frame does not have a recognizable
+MAC address then it will be sent to the router to be routed to the correct
+network.
+
+When a router receives an IP packet it looks at the IP address to determine the
+network to which the packet needs to be routed to.
+
+# Cat5, Cat5e, Cat6 Ethernet cables
+
+## Cat5
+* Cat5 is obsolete
+* Older standard
+* Max Speed 100 Mbps
+* Bandwidth 100 Mhz
+
+## Cat5e
+* Cat5e is more modern
+* `e` stands for **enhanced**
+* Reduces crosstalk
+* Can handle higher speeds
+
+## Cat6
+* Cat6 are more faster
+* Snagless is better than non-Snagless
+* Better isolation for more reduction in crosstalk
+
+# HTTP Cookies
+
+Cookies are primarily a way for web servers to introduce **state** into a
+stateless protocol like HTTP(S). This helps webservers to maintain state
+info about a client as the client requests different resources from the sesrver.
+A cookie can be set using the `Set-Cookie` HTTP header attribute.
+
+There are a few types of cookies..
+
+## Session cookie
+* It's a in-memory cookie. Exists only as long as user navigates website.
+* These cookies are deleted when browser is closed.
+* Since they don't have expiration dates, the browser recognizes them as
+session cookies
+
+## Persistent Cookie
+* Unlike session cookies, these have expiration dates.
+* Until the cookie expires, the cookie is transmitted to the domain specified
+in the domain attribute, every time user visits it.
+
+##Secure cookie
+* These cookies are only transmitted via HTTPS connections.
+* If `secure` flag attribute is set, then this cookie can only be transmitted
+securely (via HTTPS)
+
+## HTTP(S)-only cookie
+* Can only be transmitted via HTTP or HTTPS.
+* Ajax calls via Javascript will not transmit this cookie
+
+## Third-party cookie
+* If the domain attribute in the cookie is different compared to the domain
+in the address bar, then this is a 3rd party cookie.
+
+## Super cookie
+* A super cookie has a TLD (like .com) as value for its domain attribute
+* Usually they are blocked by brower
+* Such cookies will be transmitted to any domain with the same TLD
+
+## Zombie cookie
+* Cookies that persist inspite of being manually deleted.
+* This is done by some client side script that recreates the cookie from info
+stored in multiple locations like Flash local storage, html5 storage or other
+client-side storage locations.
+
+# Aliasing An Ansible Host
 
 When specifying the hosts that Ansible can interact with in the
 `/etc/ansible/hosts` file, you can put just the IP address of the host
@@ -21,7 +131,7 @@ staging ansible_host=192.168.1.50
 
 [source](http://docs.ansible.com/ansible/intro_inventory.html)
 
-# Check The Status Of All Services 
+# Check The Status Of All Services
 
 In a Linux environment, you can quickly check the status of a number of
 different services. By running `[sudo] service --status-all`, the status
@@ -32,7 +142,7 @@ just run `service --status-all` and find it in the list. The `-` symbol
 means it isn't running, the `+` symbol means it is up, and the `?` symbol
 means that it cannot determine the status.
 
-# Check The Syntax Of nginx Files 
+# Check The Syntax Of nginx Files
 
 The syntax of [`nginx`](https://www.nginx.com/) configuration files can be a
 bit finicky. On top of that, some `nginx` server commands can fail silently.
@@ -59,7 +169,7 @@ nginx: the configuration file /etc/nginx/nginx.conf syntax is ok
 nginx: configuration file /etc/nginx/nginx.conf test is successful
 ```
 
-# Determine The IP Address Of A Domain 
+# Determine The IP Address Of A Domain
 
 The `dig` (domain information grouper) command can be used to get more
 information about a domain name. To discover the IP address for a given
@@ -91,7 +201,7 @@ The *answer section* tells me that the IP address for `joshbranchaud.com` is
 
 See `man dig` for more details.
 
-# Path Of The Packets 
+# Path Of The Packets
 
 You can use `traceroute` to determine the network path packets follow from
 your machine to some host server. For instance, if I want to know path
@@ -116,7 +226,7 @@ traceroute to joshbranchaud.com (198.74.60.157), 64 hops max, 52 byte packets
 
 See `man traceroute` for more details.
 
-# Push Non-master Branch To Heroku 
+# Push Non-master Branch To Heroku
 
 When using git to deploy your app to Heroku, it is expected that you push
 to the `master` branch. When you run the following command
@@ -143,7 +253,7 @@ $ git push heroku staging:master
 
 [source](https://coderwall.com/p/1xforw/make-heroku-run-a-non-master-branch)
 
-# Reload The nginx Configuration 
+# Reload The nginx Configuration
 
 If you've modified or replaced the configuration file, nginx will not
 immediately start using the updated nginx configuration.
@@ -162,7 +272,7 @@ requests.
 
 [source](http://nginx.org/en/docs/beginners_guide.html)
 
-# Running Out Of inode Space 
+# Running Out Of inode Space
 
 Unix systems have two types of storage limitations. The first, and more
 common, is a limitation on physical storage used for storing the contents of
@@ -181,7 +291,7 @@ clean up some of those files before you can continue.
 
 Sources: [this](http://blog.scoutapp.com/articles/2014/10/08/understanding-disk-inodes) and [this](http://www.linux.org/threads/intro-to-inodes.4130/)
 
-# Wipe A Heroku Postgres Database 
+# Wipe A Heroku Postgres Database
 
 If you have some sort of non-production version of an application running on
 Heroku, you may encounter a time when you need to wipe your database and
@@ -199,3 +309,4 @@ and will then proceed.
 
 For the curious reader, running `heroku config` will list the values of a
 number of variables including `DATABASE_URL`.
+
