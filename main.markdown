@@ -11,7 +11,6 @@
 * [Linux](linux.markdown)
 * [Mac](mac.markdown)
 * [Markdown](markdown.markdown)
-* [Networking](networking.markdown)
 * [Postgres](postgres.markdown)
 * [Proxmox](proxmox.markdown)
 * [Python](python.markdown)
