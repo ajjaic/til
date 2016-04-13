@@ -3,8 +3,10 @@ If you want to find all the commits where a particular line in a file has
 changed, use
 
 ```bash
-$ git log -G "var identifier =" file.js
+$ git blame filename
 ```
+That gives commit information for each line in `filename`
+
 # New branch from an existing branch
 
 Sometimes, we want to specifically create a new branch off of another branch.
@@ -857,6 +859,8 @@ well as blank lines at the end of a file.
  * Shows content differences between two branches
 * `git show [commit]`
  * Outputs metadata and content changes of the specified commit
+* `git blame [file]`
+ * Shows when and by whom each line in a file was added
 
 ## Redo commits
 * `git reset`
