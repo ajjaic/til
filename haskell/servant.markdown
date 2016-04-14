@@ -35,3 +35,10 @@ The request to `/index/` is a GET request that will return a `String` as
 response in HTML format. And this response will contain the `X-Whatever`
 parameter in the Header.
 
+# FromHttpApiData/ToHttpApiData
+
+How does servant know how to decode queryparams, url captures and http headers?
+
+All captures, queryparams and headers are represented by some textual value in
+the URL and in the request HEADER. So if you want servant to decode them into
+the correct types, then those types should have **FromHttpApiData** instances.
