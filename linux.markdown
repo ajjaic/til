@@ -1,3 +1,12 @@
+# Writing ISO/Image to USB
+
+```
+$ dd bs=4M if=/path/to/archlinux.iso of=/dev/sdx status=progress && sync
+```
+
+**of** and **if** stand for **output file** and **input file** respectively
+The `of` should be the actual drive and as such has no partition number
+
 # Show all open ports
 
 To display the list of all open ports, enter:

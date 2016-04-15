@@ -1,4 +1,38 @@
-# Proxmox
+# Host/Domain naming convention
+
+A proper naming scheme should have the following pattern
+
+`<hostname>.<networkname>.<domain>`
+
+The hostname itself can having a different scheme based on the following
+pattern.
+
+For example
+
+`<role-location-hostid>` or simple `<role-hostid>`
+
+Examples of roles:
+* gw - Gateway
+* wl - Access point
+* ap - Genarl app server
+* wb - Web server
+* db - Database server
+* ns - DNS
+* dc - Domain
+* vs - Virtualization server
+* gm - Game server
+* nb - Notebook/Laptop
+* tb - Tablet
+* ph - phone
+
+So for example based on two locations at Home and Colo I could do:
+
+```
+hmgw01.hm.example.com
+clgw01.cl.example.com
+```
+
+# Proxmox Standard Locations
 
 * Backups `/var/lib/vz/dump`
 * VM installation ISOs `/var/lib/vz/template/iso`
