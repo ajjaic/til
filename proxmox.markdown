@@ -1,3 +1,34 @@
+# Disk Passthrough for KVM VMs
+
+* First identify the disks you want to passthrough with `ls -l /dev/disk/by-id`
+* Then allow the disk to passthrough to the VM with
+  * `qm set  592  -virtio2 /dev/disk/by-id/ata-ST3000DM001-1CH166_Z1F41BLC`
+  * **592** is the VM id.
+  * **virtio** is the interface to the disk from the VM. This could also be
+    **sata** or **ide** or **scsi**
+  * The number at the end of **virtio** is the volume number and the range
+    depends on the interface chosen.
+  * The last argument is the disk identified by its ID that should be passed
+    through to the VM
+
+# Proxmox Images/ISO/Templates/Backups/Containers
+
+Proxmox represents various resources related to virtualization using,
+
+* Images - KMV hard disk images
+* ISO - KVM installation disk
+* Containers - LXC hard disk image
+* Templates - LXC installation template/disk
+* Backups - Used for taking dumps of KVM images and LXC containers
+
+# Proxmox command line tools
+
+Everything that can be done on the web GUI can be done in CLI as well. Proxmox
+has commands for KVMs, LXC, performing backups, managing clusters, storage,
+networking and various other aspects of proxmox.
+
+For more [info](https://pve.proxmox.com/wiki/Command_line_tools)
+
 # Host/Domain naming convention
 
 A proper naming scheme should have the following pattern
@@ -12,6 +43,7 @@ For example
 `<role-location-hostid>` or simple `<role-hostid>`
 
 Examples of roles:
+
 * gw - Gateway
 * wl - Access point
 * ap - Genarl app server
@@ -138,32 +170,33 @@ iface vmbr0 inet static
 # Proxmox update repos
 
 Proxmox has 2 repos. Enterprise (paid) and Non-Enterprise (free).
-If you have a subscription you can access the enterprise repos at,
+If you have a subscription you can access the enterprise repos.
 
-Subscription repo
-```
-$ cat /etc/apt/sources.list.d/pve-enterprise.list
-deb https://enterprise.proxmox.com/debian jessie pve-enterprise
-```
+The enterprise subscription repo can be found at
+`/etc/apt/sources.list.d/pve-enterprise.list`
 
-Non-Subscription repo
+To access the Non-Enterprise repo, add the following lines
 ```
-$ cat /etc/apt/sources.list
-deb http://ftp.debian.org/debian jessie main contrib
-
 # PVE pve-no-subscription repository provided by proxmox.com, NOT recommended for production use
 deb http://download.proxmox.com/debian jessie pve-no-subscription
-
-# security updates
-deb http://security.debian.org/ jessie/updates main contrib
 ```
+to `/etc/apt/sources.list`
 
-If you are using Non-Subscription repo, you can prevent error messages from
-accessing the enterprise repo, by commenting the line in `/etc/apt/sources.list.d/pve-enterprise.list`
+If you are using Non-Enterprise repo, you can prevent error messages that occur
+from accessing the enterprise repo, by commenting the following line
+
+`# deb https://enterprise.proxmox.com/debian jessie pve-enterprise`
+
+in the enterprise sources file.
 
 For more [info](https://pve.proxmox.com/wiki/Package_repositories)
 
 # Performance settings for KVMs
+
+* CPU
+  * The Sockets refers to the number of physical CPU's in the proxmox host
+  * The cores refers to the number of cores per socket
+  * Numa -
 
 * Hard Disk
   * Virtio for hard disk can be used if the VM is read/write heavy
@@ -173,8 +206,5 @@ For more [info](https://pve.proxmox.com/wiki/Package_repositories)
   * If using RAW VM format, then its cache should be none.
   * qcow2 has snapshot capability and file size grows dynamically
 
-
 * NIC
   * Virtio for NICs can be used if the VM is network heavy
-
-# Steps for creating a pfsense VM in Proxmox
