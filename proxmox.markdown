@@ -11,7 +11,7 @@
   * The last argument is the disk identified by its ID that should be passed
     through to the VM
 
-# Proxmox Images/ISO/Templates/Backups/Containers
+# Proxmox Disk Entities
 
 Proxmox represents various resources related to virtualization using,
 
@@ -46,11 +46,12 @@ Examples of roles:
 
 * gw - Gateway
 * wl - Access point
-* ap - Genarl app server
+* ap - General app server
 * wb - Web server
 * db - Database server
 * ns - DNS
 * dc - Domain
+* fs - File server
 * vs - Virtualization server
 * gm - Game server
 * nb - Notebook/Laptop
