@@ -6,10 +6,13 @@
   * **592** is the VM id.
   * **virtio** is the interface to the disk from the VM. This could also be
     **sata** or **ide** or **scsi**
-  * The number at the end of **virtio** is the volume number and the range
-    depends on the interface chosen.
+  * The number at the end of **virtio** is the volume number or device number
+    and the range depends on the interface chosen.
   * The last argument is the disk identified by its ID that should be passed
     through to the VM
+* To verify that the disks have been added, grep the VM file for the specific
+  disk id.
+  * Ex: `grep Z1F41BLC /etc/pve/qemu-server/592.conf`
 
 # Proxmox Disk Entities
 
