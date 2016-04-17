@@ -1,6 +1,13 @@
-# Open Media Vault NAS OS (OMV)
+# Proxmox backups
 
-## Installing 3rd party plugins
+Before a backup can run, a backup storage must be defined. In most situations,
+using a NFS server is the good way to store backups.
+
+The `Max Backups` settings defines the maximum allowed backups of each VM/CT.
+That means, a scheduled job will store the defined number of backup of each
+VM/CT. If the limit is reached, the oldest backup is removed automatically.
+
+# OMV Installing 3rd party plugins
 
 OMV by default does not come with the plugin that gives access to other
 community created plugins. For that we need to manually download and install
@@ -11,7 +18,7 @@ the following plugin
  * Upload to OMV and install it
  * Now refresh the set of available plugins
 
-## Storage Pooling
+# OMV Storage Pooling
 
 * Install a plugin for storage pooling like the unionfilesystems plugin.
 * Choose aufs
@@ -19,7 +26,7 @@ the following plugin
   have my movies on two disks. I don't want them scattered about should I want
   to split them apart later.
 
-## Creating NFS shares
+# OMV Creating NFS shares
 
 * NFS does not do any username/password based authentication.
 * It merely allows to mount a file system hosted over the network
