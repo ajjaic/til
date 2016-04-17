@@ -1,3 +1,24 @@
+# Open Media Vault NAS OS (OMV)
+
+## Installing 3rd party plugins
+
+OMV by default does not come with the plugin that gives access to other
+community created plugins. For that we need to manually download and install
+the following plugin
+
+ * Visit [omv-extras](http://omv-extras.org/joomla/index.php/guides)
+ * Download the 3rd party plugin
+ * Upload to OMV and install it
+ * Now refresh the set of available plugins
+
+## Storage Pooling
+
+* Install a plugin for storage pooling like the unionfilesystems plugin.
+* Choose aufs
+* Select pmfs as the creating strategy so you can keep music on on disk and I
+  have my movies on two disks. I don't want them scattered about should I want
+  to split them apart later.
+
 # Disk Passthrough for KVM VMs
 
 * First identify the disks you want to passthrough with `ls -l /dev/disk/by-id`
