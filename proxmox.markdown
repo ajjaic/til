@@ -15,9 +15,29 @@ the following plugin
 
 * Install a plugin for storage pooling like the unionfilesystems plugin.
 * Choose aufs
-* Select pmfs as the creating strategy so you can keep music on on disk and I
+* Select pmfs as the creating strategy so you can keep music on one disk and I
   have my movies on two disks. I don't want them scattered about should I want
   to split them apart later.
+
+## Creating NFS shares
+
+* NFS does not do any username/password based authentication.
+* It merely allows to mount a file system hosted over the network
+* Access control must be provided by the individual applications using the
+  share
+* Therefore in OMV, it is better to allow **read/write** permissions for
+  everyone when using NAS
+* Specify restrictions based on IP using the CIDR convention (eg: 10.0.0.0/24)
+* If you want to disable IP based restriction to access NFS, then choose `*`
+* Use default option of `no_subtree_check` and `secure`
+* If using AUFS, then the `/etc/exports/` file in the NFS server should have
+  distinct `fsid` options for all the shares. (eg: fsid=1 or fsid=2). It cannot
+  be `fsid=0` and must be less than 255
+* After editing `/etc/exports/`, to reload the configuration you can use
+  `exportfs -r` on the NFS server
+* To mount a NFS share in OMV on the client you can use `sudo mount <ip of OMV server>:/export/<sharename> <localpath to mount to>`
+  `(ex: sudo mount 10.0.0.5:/export/proxmox /mnt/nfs)`
+* To unmount the share from the client, try `sudo umount /mnt/nfs`
 
 # Disk Passthrough for KVM VMs
 

@@ -1,3 +1,15 @@
+# Mounting/Unmounting an NFS share on the client
+
+To mount a NFS share on the client you can use
+```
+$ sudo mount <ip of NFS server>:<share path> <localpath to mount to>
+```
+
+To unmount the mounted filesystem,
+```
+$ sudo umount <localpath to mount to>
+```
+
 # Port forwarding and Port triggering
 * Port forwarding:
   > New connections from the outside to a certain port or port range go to a
