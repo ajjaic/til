@@ -1,3 +1,30 @@
+# Port forwarding and Port triggering
+* Port forwarding:
+  > New connections from the outside to a certain port or port range go to a
+    designated LAN machine. The ports are determined by the kind of server you
+    want to run, (e.g. 80 for a web server) and the IP is the private LAN IP
+    of your web server.
+* Port triggering:
+  > new connections from the outside to a certain port go to whatever LAN
+    machine made a certain outgoing connection (as defined by destination port).
+    Example: You define port 25 as trigger and 113 as port. If any of your LAN
+    machines creates a outgoing connection (=trigger) to port 25 (e.g. to send
+    mail), all incoming connections to port 113 will temporarily go to that
+    machine. After a timeout, new 113 connections will again be dropped.
+
+# The Art of Grepping
+
+* **Grep For Files Without A Match**
+  > `$ grep -L "foobar" ./*` finds files that don't have the pattern "foobar"
+    in the current directory. For more [info](http://stackoverflow.com/questions/1748129/using-grep-to-find-files-that-dont-contain-a-given-string-pattern)
+* **Grep For Multiple Patterns**
+  > `$ grep -e ruby -e clojure README.md` finds files in the current directory
+    that contain both patterns "ruby" and "clojure"
+* **Searching files recursively for a pattern**
+  > `$ grep -r netlogo *` searches all files in the current folder for the
+    pattern `netlogo` and then recursively descends into each directory to
+    search for the pattern.
+
 # Writing ISO/Image to USB
 
 ```
@@ -50,39 +77,6 @@ It includes a series of prompts regarding choices about the upgrade and a
 lot of waiting.
 
 Adding the `-d` flag will upgrade to the latest development release.
-
-# Switch Versions of a Brew Formula
-
-If you've installed a couple versions of a program via brew and you'd like
-to switch from the currently linked version to the other installed version,
-you can use the `switch` command. For instance, if you are on version
-`1.8.2` of `phantomjs` and you'd like to switch to `1.9.0`, you can simply
-invoke:
-
-```
-$ brew switch phantomjs 1.9.0
-```
-
-More generically:
-
-```
-$ brew switch <formula> <version>
-```
-
-# Default Screenshot Location
-
-By default, Mac saves all screenshots to the desktop. If you'd like
-screenshots to be dumped somewhere else, you have to configure it manually
-from the command line. For instance, if you'd like your screenshots to be
-saved in the `~/screenshots` directory, then enter the following commands:
-
-```bash
-$ mkdir ~/screenshots
-$ defaults write com.apple.screencapture location ~/screenshots
-$ killall SystemUIServer
-```
-
-[source](http://osxdaily.com/2011/01/26/change-the-screenshot-save-file-location-in-mac-os-x/)
 
 # All The Environment Variables
 
@@ -250,34 +244,6 @@ $ grep 'bar' bar.md
 For a short command like this, we haven't gained much. However, for large
 commands that span the length of the terminal, this can definitely save us
 a little trouble.
-
-# Grep For Files Without A Match
-
-The `grep` command is generally used to find files whose contents match a
-pattern. With the `-L` (`--files-without-match`) flag, `grep` can be used to
-find files that don't match the given pattern.
-
-For instance, to find files in the current directory that don't have
-`foobar` anywhere in their content, run:
-
-```bash
-$ grep -L "foobar" ./*
-```
-
-[source](http://stackoverflow.com/questions/1748129/using-grep-to-find-files-that-dont-contain-a-given-string-pattern)
-
-# Grep For Multiple Patterns
-
-You can use the `-e` flag with the `grep` command to search for a pattern.
-Additionally, you can use multiple `-e` flags to search for multiple
-patterns. For instance, if you want to search for occurrences of `ruby` and
-`clojure` in a `README.md` file, use the following command:
-
-```
-$ grep -e ruby -e clojure README.md
-```
-
-See `man grep` for more details.
 
 # Hexdump A Compiled File
 
