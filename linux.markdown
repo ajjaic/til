@@ -46,6 +46,7 @@ To see a list of shares exported by an nfs server
 ```
 $ showmount -e <ip of nfs server>
 ```
+For more [info](http://www.troubleshooters.com/linux/nfs.htm)
 
 # Port forwarding and Port triggering
 * Port forwarding:
