@@ -1,3 +1,11 @@
+# Proxmox Terminal access LXC containers
+
+* To access the shell of an LXC container `pct enter <vmid>`
+  > Ex: `pct enter 101`
+
+* To access a login console of an LXC container `pct console <vmid>`
+  > Ex: `pct console 101`
+
 # Proxmox backups
 
 Before a backup can run, a backup storage must be defined. In most situations,
@@ -43,7 +51,8 @@ the following plugin
 * After editing `/etc/exports/`, to reload the configuration you can use
   `exportfs -r` on the NFS server
 * To mount a NFS share in OMV on the client you can use `sudo mount <ip of OMV server>:/export/<sharename> <localpath to mount to>`
-  `(ex: sudo mount 10.0.0.5:/export/proxmox /mnt/nfs)`
+  * `(ex: sudo mount 10.0.0.15:/export/proxmox /mnt/nfs)`
+  * make sure `nfs-common` is installed
 * To unmount the share from the client, try `sudo umount /mnt/nfs`
 
 # Disk Passthrough for KVM VMs

@@ -1,3 +1,35 @@
+# Checking/Setting the host/domain name in Debian
+## To check hostname and domain name
+```
+root@mail:~# hostname
+mail
+```
+Domain Name
+```
+root@mail:~# hostname -d
+example.com
+```
+FQDN (Fully Qualified Domain Name)
+```
+root@mail:~# hostname -f
+mail.example.com
+```
+
+## To change hostname and domain name
+* Edit /etc/hostname to change the hostname.
+* Edit /etc/hosts to change the Domain name and FQDN.
+
+To set domain and fqdn, in `/etc/hosts/` find the following lines
+```
+127.0.0.1 localhost
+127.0.1.1 mail.example.com mail
+```
+Change the second line based on following pattern,
+
+```
+127.0.0.1 <hostname>.<domainname> <hostname>
+```
+
 # Mounting/Unmounting an NFS share on the client
 
 To mount a NFS share on the client you can use
@@ -7,7 +39,12 @@ $ sudo mount <ip of NFS server>:<share path> <localpath to mount to>
 
 To unmount the mounted filesystem,
 ```
-$ sudo umount <localpath to mount to>
+$ sudo umount <mounted path>
+```
+
+To see a list of shares exported by an nfs server
+```
+$ showmount -e <ip of nfs server>
 ```
 
 # Port forwarding and Port triggering
