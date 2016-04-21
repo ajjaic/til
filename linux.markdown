@@ -1,31 +1,33 @@
 # Checking/Setting the host/domain name in Debian
-## To check hostname and domain name
+
+To check hostname try
 ```
 root@mail:~# hostname
 mail
 ```
-Domain Name
+For domain name
 ```
 root@mail:~# hostname -d
 example.com
 ```
-FQDN (Fully Qualified Domain Name)
+To get the FQDN (Fully Qualified Domain Name), try
 ```
 root@mail:~# hostname -f
 mail.example.com
 ```
-
-## To change hostname and domain name
-* Edit /etc/hostname to change the hostname.
-* Edit /etc/hosts to change the Domain name and FQDN.
-
-To set domain and fqdn, in `/etc/hosts/` find the following lines
+The hostname and domain name are stored in both of these files
 ```
+/etc/hostname
+/etc/hosts
+```
+Edit `/etc/hostname` to change the hostname. Edit `/etc/hosts` to change the
+Domain name and FQDN.
+```
+$ cat /etc/hosts
 127.0.0.1 localhost
 127.0.1.1 mail.example.com mail
 ```
 Change the second line based on following pattern,
-
 ```
 127.0.0.1 <hostname>.<domainname> <hostname>
 ```
