@@ -1,13 +1,35 @@
+# OMV Luks encryption
+You can encrypt your data disks using the LUKS plugin from OMV called
+`openmediavault-luksencryption`. It can be installed from the `plugins` tab.
+
+Instead of a password, a key file could be used. The key file enables you to
+lock and unlock a LUKS encrypted partition/disk without a password.
+
+A key file can be generated with
+```
+$ dd bs=512 count=4 if=/dev/urandom of=./mykeyfile iflag=fullblock
+```
+The above command creates a 2048 byte key. To increase or decrease the size of
+the key you can increase or decrease the `count` parameter. A key file can have
+a max size of 8192kB.
+
+Sometimes, when the disk is newly encrypted and a new file system is created, it
+is possible for the disk to make some click noises when they are mounted. The
+reason for those noises could be because the ext4 filesystem lazy creates the
+required datastructues on the disk, keeping it quite busy. `iotop` can tell us
+which process is writing to the disk so much. For more [info](https://www.reddit.com/r/DataHoarder/comments/3o37gt/external_hdd_clicking_noise_after_encrypting_with/)
+
 # Proxmox Terminal access LXC containers
-
-* To access the shell of an LXC container `pct enter <vmid>`
-  > Ex: `pct enter 101`
-
-* To access a login console of an LXC container `pct console <vmid>`
-  > Ex: `pct console 101`
+To access the shell of an LXC container `pct enter <vmid>`
+```
+pct enter 101
+```
+To access a login console of an LXC container `pct console <vmid>`
+```
+pct console 101
+```
 
 # Proxmox backups
-
 Before a backup can run, a backup storage must be defined. In most situations,
 using a NFS server is the good way to store backups.
 
@@ -16,7 +38,6 @@ That means, a scheduled job will store the defined number of backup of each
 VM/CT. If the limit is reached, the oldest backup is removed automatically.
 
 # OMV Installing 3rd party plugins
-
 OMV by default does not come with the plugin that gives access to other
 community created plugins. For that we need to manually download and install
 the following plugin
@@ -27,7 +48,6 @@ the following plugin
  * Now refresh the set of available plugins
 
 # OMV Storage Pooling
-
 * Install a plugin for storage pooling like the unionfilesystems plugin.
 * Choose aufs
 * Select pmfs as the creating strategy so you can keep music on one disk and I
@@ -35,7 +55,6 @@ the following plugin
   to split them apart later.
 
 # OMV Creating NFS shares
-
 * NFS does not do any username/password based authentication.
 * It merely allows to mount a file system hosted over the network
 * Access control must be provided by the individual applications using the
@@ -56,7 +75,6 @@ the following plugin
 * To unmount the share from the client, try `sudo umount /mnt/nfs`
 
 # Disk Passthrough for KVM VMs
-
 * First identify the disks you want to passthrough with `ls -l /dev/disk/by-id`
 * Then allow the disk to passthrough to the VM with
   * `qm set  592  -virtio2 /dev/disk/by-id/ata-ST3000DM001-1CH166_Z1F41BLC`
@@ -72,7 +90,6 @@ the following plugin
   * Ex: `grep Z1F41BLC /etc/pve/qemu-server/592.conf`
 
 # Proxmox Disk Entities
-
 Proxmox represents various resources related to virtualization using,
 
 * Images - KMV hard disk images
@@ -82,7 +99,6 @@ Proxmox represents various resources related to virtualization using,
 * Backups - Used for taking dumps of KVM images and LXC containers
 
 # Proxmox command line tools
-
 Everything that can be done on the web GUI can be done in CLI as well. Proxmox
 has commands for KVMs, LXC, performing backups, managing clusters, storage,
 networking and various other aspects of proxmox.
@@ -90,18 +106,18 @@ networking and various other aspects of proxmox.
 For more [info](https://pve.proxmox.com/wiki/Command_line_tools)
 
 # Host/Domain naming convention
-
 A proper naming scheme should have the following pattern
-
-`<hostname>.<networkname>.<domain>`
+```
+<hostname>.<networkname>.<domain>
+```
 
 The hostname itself can having a different scheme based on the following
 pattern.
 
 For example
-
-`<role-location-hostid>` or simple `<role-hostid>`
-
+```
+<role-location-hostid> or simple `<role-hostid>`
+```
 Examples of roles:
 
 * gw - Gateway
@@ -119,7 +135,6 @@ Examples of roles:
 * ph - phone
 
 So for example based on two locations at Home and Colo I could do:
-
 ```
 hmgw01.hm.example.com
 clgw01.cl.example.com
@@ -148,7 +163,6 @@ the following file should be edited
 $ /etc/network/interfaces file
 ```
 # Creating a new network interface
-
 Every interface starts with an interface definition followed by interface
 options.
 
@@ -159,7 +173,6 @@ options.
     network cables from each guest were all plugged into the same switch
 
 ## A few interface options
-
 * **auto** <interface> - starts the interface at boot time
 * **inet** - interface is IPv4
 * **inet6** - interface is IPv6
@@ -170,7 +183,6 @@ options.
 For more info visit the [debian wiki](https://wiki.debian.org/NetworkConfiguration#Setting_up_an_Ethernet_Interface) about setting up an ethernet interface
 
 ## Examples
-
 ```
 auto eth0
 iface eth0 inet manual
@@ -229,7 +241,6 @@ iface vmbr0 inet static
 * This allows you to create internal subnets that exist only within the host
 
 # Proxmox update repos
-
 Proxmox has 2 repos. Enterprise (paid) and Non-Enterprise (free).
 If you have a subscription you can access the enterprise repos.
 
@@ -253,7 +264,6 @@ in the enterprise sources file.
 For more [info](https://pve.proxmox.com/wiki/Package_repositories)
 
 # Performance settings for KVMs
-
 * CPU
   * The Sockets refers to the number of physical CPU's in the proxmox host
   * The cores refers to the number of cores per socket

@@ -1,5 +1,10 @@
-# Checking/Setting the host/domain name in Debian
+# Check disk activity
+To know what process is writing to your disks, you can try
+```
+iotop
+```
 
+# Checking/Setting the host/domain name in Debian
 To check hostname try
 ```
 root@mail:~# hostname
