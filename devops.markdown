@@ -1,3 +1,15 @@
+# SSH into docker containers with Public Key
+
+To `SSH` into docker containers, an ssh server must be running on the container.
+And then, have a key pair on the local host. And provision the docker container
+with the `public key` of the host. You can do this by ensuring that the hosts
+`public key` is an authorized key in the container's `authorized_keys` file. It
+can be done like by running the following command in the container,
+
+```
+$ cat host_pub_key >> ~/.ssh/authorized_keys
+```
+
 # Common networking Acronyms
 
 * `WAN` - Wide Area Network. Also known as the internet.
