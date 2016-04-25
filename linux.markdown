@@ -36,6 +36,7 @@ Change the second line based on following pattern,
 ```
 127.0.0.1 <hostname>.<domainname> <hostname>
 ```
+to set the hostname and domainname and consequently the fqdn
 
 # Mounting/Unmounting an NFS share on the client
 
@@ -53,16 +54,24 @@ To see a list of shares exported by an nfs server
 ```
 $ showmount -e <ip of nfs server>
 ```
+
+To check if an nfs share is mounted or not,
+```
+$ sudo mount -t nfs
+```
 For more [info](http://www.troubleshooters.com/linux/nfs.htm)
 
 # Port forwarding and Port triggering
-* Port forwarding:
+* **Port forwarding**:
+
   > New connections from the outside to a certain port or port range go to a
     designated LAN machine. The ports are determined by the kind of server you
     want to run, (e.g. 80 for a web server) and the IP is the private LAN IP
     of your web server.
-* Port triggering:
-  > new connections from the outside to a certain port go to whatever LAN
+
+* **Port triggering**:
+
+  > New connections from the outside to a certain port go to whatever LAN
     machine made a certain outgoing connection (as defined by destination port).
     Example: You define port 25 as trigger and 113 as port. If any of your LAN
     machines creates a outgoing connection (=trigger) to port 25 (e.g. to send
@@ -72,15 +81,25 @@ For more [info](http://www.troubleshooters.com/linux/nfs.htm)
 # The Art of Grepping
 
 * **Grep For Files Without A Match**
-  > `$ grep -L "foobar" ./*` finds files that don't have the pattern "foobar"
+
+  > `$ grep -L "foobar" ./*`
+
+  > finds files that don't have the pattern "foobar"
     in the current directory. For more [info](http://stackoverflow.com/questions/1748129/using-grep-to-find-files-that-dont-contain-a-given-string-pattern)
+
 * **Grep For Multiple Patterns**
-  > `$ grep -e ruby -e clojure README.md` finds files in the current directory
-    that contain both patterns "ruby" and "clojure"
+
+  > `$ grep -e ruby -e clojure README.md`
+
+  > finds files in the current directory that contain both patterns "ruby" and
+    "clojure"
+
 * **Searching files recursively for a pattern**
-  > `$ grep -r netlogo *` searches all files in the current folder for the
-    pattern `netlogo` and then recursively descends into each directory to
-    search for the pattern.
+
+  > `$ grep -r netlogo *`
+
+  > searches all files in the current folder for the pattern `netlogo` and then
+    recursively descends into each directory to search for the pattern.
 
 # Writing ISO/Image to USB
 
@@ -88,8 +107,8 @@ For more [info](http://www.troubleshooters.com/linux/nfs.htm)
 $ dd bs=4M if=/path/to/archlinux.iso of=/dev/sdx status=progress && sync
 ```
 
-**of** and **if** stand for **output file** and **input file** respectively
-The `of` should be the actual drive and as such has no partition number
+`of` and `if` stand for `output file` and `input file` respectively. The `of`
+should be the actual device file and as such has no partition number
 
 # Show all open ports
 
@@ -153,7 +172,7 @@ $ cat -n Gemfile
  6  # Use postgresql as the database for Active Record
  7  gem 'pg'
 ```
-[source]('https://rubygems.org')
+[source](https://rubygems.org)
 
 # Change Default Shell For A User
 
@@ -190,15 +209,11 @@ and a number of other details are included.
 
 See more details with `man lsof`.
 
-h/t [Mike Chau](https://twitter.com/money_mikec)
-
 # Clear The Screen
 
 If you type `clear` into your shell, the screen will be cleared. There is a
 handy keybinding though that will save you a few keystrokes. Just hit
 `ctrl-l` to achieve the same effect.
-
-source: [Derek P.](https://twitter.com/DerkTheDaring)
 
 # Copying File Contents To System Paste Buffer
 
@@ -234,8 +249,7 @@ $ diff <(echo 'hello, world') <(echo 'hello, mars')
 > hello, mars
 ```
 
-Sources: [Brian Dunn](https://twitter.com/higgaion) and
-[Bash Guide for Beginners](http://tldp.org/LDP/Bash-Beginners-Guide/html/sect_03_04.html#sect_03_04_07)
+Sources: [Bash Guide for Beginners](http://tldp.org/LDP/Bash-Beginners-Guide/html/sect_03_04.html#sect_03_04_07)
 
 # Do Not Overwrite Existing Files
 
@@ -368,8 +382,6 @@ listen for the following kill command:
 
 This will kill the frozen SSH session and leave you in the terminal where
 you were before you SSH'd.
-
-source: [Jack C.](http://hashrocket.com/team/jack-christensen)
 
 # List All The Say Voices
 
