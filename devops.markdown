@@ -9,6 +9,8 @@ can be done like by running the following command in the container,
 ```
 $ cat host_pub_key >> ~/.ssh/authorized_keys
 ```
+You first have to make sure that the `host_pub_key` is available on the
+container.
 
 # Common networking Acronyms
 
@@ -146,13 +148,16 @@ staging ansible_host=192.168.1.50
 # Check The Status Of All Services
 
 In a Linux environment, you can quickly check the status of a number of
-different services. By running `[sudo] service --status-all`, the status
-command will be invoked for all services under the `/etc/init.d/` directory.
+different services.
+```
+$ sudo service --status-all
+```
+That will show status of all services invoked under the `/etc/init.d/`
+directory. The output will contain the names of services along with differnt
+symbols.
 
-So, if you want to check the status of something like `nginx` or `apache`,
-just run `service --status-all` and find it in the list. The `-` symbol
-means it isn't running, the `+` symbol means it is up, and the `?` symbol
-means that it cannot determine the status.
+The `-` symbol means it isn't running, the `+` symbol means it is up, and the
+`?` symbol means that it cannot determine the status.
 
 # Check The Syntax Of nginx Files
 
