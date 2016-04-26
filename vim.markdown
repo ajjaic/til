@@ -4,25 +4,26 @@ annotated with `{{{` and `}}}` then you can use `zE` to delete all the fold
 markers in the file
 
 # Hiding and Unhiding Comments
-
 To hide a comment,
-
-`:hi! link Comment Ignore`
+```vim
+:hi! link Comment Ignore
+```
 
 To get them back,
-
-`:hi! link Comment Comment`
+```vim
+:hi! link Comment Comment
+```
 
 You could also use,
-
-`:hi! Comment guifg=bg ctermfg=bg`
-
+```vim
+:hi! Comment guifg=bg ctermfg=bg
+```
 to change the foreground color of the comments to match the background color of
 the editor. But in that case, the comments become entirely invisible. If that
 happens you can get back the comments by changing the color to something else.
-
-`:hi! Comment guifg=bg ctermfg=white` or `:hi! Comment guifg=bg ctermfg=red`
-
+```vim
+:hi! Comment guifg=bg ctermfg=white or `:hi! Comment guifg=bg ctermfg=red`
+```
 The term **ctermfg** controls the foreground color of the comments
 
 [source](http://stackoverflow.com/questions/11152002/vim-hide-not-fold-lines)
