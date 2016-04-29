@@ -1,3 +1,8 @@
+# Yanking to register. Pasting from register or clipboard
+To yank to a register try `"kyy`. This will yank the current line to the `k`
+register. To paste from `k` register you can use `"kp`. You can also paste from
+clipboard on Linux with `"+p`
+
 # Delete fold markers in a file
 If your foldmethod is set to `marker` and you have a lot of lines in your file
 annotated with `{{{` and `}}}` then you can use `zE` to delete all the fold
