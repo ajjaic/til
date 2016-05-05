@@ -1,3 +1,17 @@
+# Bind Mounts
+A bind mount is an alternate view of a directory tree. Classically, mounting
+creates a view of a storage device as a directory tree. A bind mount instead
+takes an existing directory tree and replicates it under a different point.
+The directories and files in the bind mount are the same as the original. Any
+modification on one side is immediately reflected on the other side, since the
+two views show the same data.
+
+For example, after issuing the Linux command
+```
+mount --bind /some/where /else/where
+```
+the directories `/some/where` and `/else/where` have the same content.
+
 # Check disk activity
 To know what process is writing to your disks, you can try
 ```
