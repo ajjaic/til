@@ -64,7 +64,12 @@
   refactor to hearts content. Quantity triumphs any initial attempts at quality.
 * Prefer to import libraries as qualified. Typically this is just considered
   good practice for business logic libraries, it makes it easier to locate the
-  source of symbol definitions.
+  source of symbol definitions. It is recommended to focus on the following two
+  forms of import:
+  ```
+  import qualified Very.Special.Module as VSM
+  import Another.Important.Module (printf, (<|>), )
+  ```
 
 # Values with Types with Kinds with Sorts
 
