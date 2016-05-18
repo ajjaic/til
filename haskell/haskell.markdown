@@ -1,54 +1,80 @@
+# Haskell Mistakes - Jasper Van der Jeugt
+This is a summary of pointers presented in the following video
+[source](https://www.youtube.com/watch?v=S3WGPuqfBLg)
+
+* Focus on modules as units
+* Exposed interface of a module should be clean
+* Documentation for the module at the top
+* Some tests for the module
+* Always compile using -Wall during development. You can use -Werror for Prod.
+* Try to avoid wildcard pattern matches like,
+  ```
+  fireSquad :: IsMurderer -> Bool
+  fireSquad = \case
+    Innocent -> False
+    _        -> True
+  ```
+* Remember that exceptions in Haskell are different. Reasoning about exceptions
+  are complicated by laziness and async code. One way to deal with this is to
+  use pure code as much as possible. Instead of exceptions use
+  `Control.Monad.Except`
+* Use a testing library to test your code
+* Use the Text library instead of the String type unless you're writing a very
+  simple program.
+* Make all your code pure if possible.
+* Don't try to prematurely abstract or prematurely optimize. Waiting awhile
+  until a pattern emerges is better way to come up with abstractions
+
 # Extensions
-
-* `{-# LANGUAGE OverloadedStrings #-}`
-  * Allows string literals to be inferred as ByteString, Text, String or any
-    string like Type
-* `{-# LANGUAGE OverloadedLists #-}`
-  * Allows list literals to be inferred as Set, IntSet
-* `{-# LANGUAGE EmptyDataDecls #-}`
-  * Allows defining Types with no Constructors
-* `{-# LANGUAGE ScopedTypeVariables #-}`
-  * Allows reusing type variables from the parent signature in the type
-    signatures for any local definition or in the annotations of any local
-    binding
-* `{-# LANGUAGE DeriveFunctor #-}`
-  * Derives Functors for datatypes
-* `{-# LANGUAGE DeriveFoldable #-}`
-  * Derives Foldable for datatypes
-* `{-# LANGUAGE DeriveTraversable #-}`
-  * Derives Traversable for datatypes
-* `{-# LANGUAGE DeriveGeneric #-}`
-  * Based on GHC.Generics for deriving classes not in Base. Can be used by
-    `import GHC.Generics`
-* `{-# LANGUAGE FlexibleInstances #-}`
-  * Without it you cannot do `instance TypeClass (Maybe Int) where`
-* `{-# LANGUAGE InstanceSigs #-}`
-  * Allows one to write type signatures for the methods in an instance
-    definition
-* `{-# LANGUAGE DataKinds #-}`
-  * GHC automatically promotes every suitable datatype to be a kind, and its
-    (value) constructors to be type constructors.
-* `{-# LANGUAGE StandaloneDeriving #-}`
-  * Using this allows one to derive instances for types defined in other
-    modules with `instance Show a => Show (List a)`
-* `{-# LANGUAGE NoImplicitPrelude #-}`
-  * Do not implicitly import the default Prelude module
-* `{-# LANGUAGE GeneralizedNewtypeDeriving #-}`
-  *
-* `{-# LANGUAGE DeriveDataTypeable #-}`
-  *
-* `{-# LANGUAGE NoMonomorphismRestriction #-}`
-  *
-* `{-# LANGUAGE DeriveAnyClass #-}`
-  *
-* `{-# LANGUAGE GADTs #-}`
-
-* Extensions to use in every file
+* **Extensions to use in every file**
   * `{-# LANGUAGE OverloadedLists #-}`
+    > Allows string literals to be inferred as ByteString, Text, String or any
+      string like Type
   * `{-# LANGUAGE OverloadedStrings #-}`
-  * `{-# LANGUAGE EmptyDataDecls #-}`
+    > Allows string literals to be inferred as ByteString, Text, String or any
+      string like Type
   * `{-# LANGUAGE ScopedTypeVariables #-}`
+    > Allows reusing type variables from the parent signature in the type
+      signatures for any local definition or in the annotations of any local
+      binding
+  * `{-# LANGUAGE GeneralizedNewtypeDeriving #-}`
   * `{-# LANGUAGE NoImplicitPrelude #-}` (Use classy-prelude)
+
+* **Extensions that extend the Type system**
+  * `{-# LANGUAGE GADTs #-}`
+  * `{-# LANGUAGE DataKinds #-}`
+    > GHC automatically promotes every suitable datatype to be a kind, and its
+      (value) constructors to be type constructors.
+  * `{-# LANGUAGE FlexibleInstances #-}`
+    > Without it you cannot do `instance TypeClass (Maybe Int) where`
+  * `{-# LANGUAGE EmptyDataDecls #-}`
+    > Allows defining Types with no Constructors
+
+* **Extensions that improve readability**
+  * `{-# LANGUAGE LambdaCase #-}`
+  * `{-# LANGUAGE ViewPatterns #-}`
+  * `{-# LANGUAGE PatternGuards #-}`
+  * `{-# LANGUAGE MultiWayIf #-}`
+  * `{-# LANGUAGE TupleSections #-}`
+  * `{-# LANGUAGE BinaryLiterals #-}`
+  * `{-# LANGUAGE InstanceSigs #-}`
+    > Allows one to write type signatures for the methods in an instance
+      definition
+
+* **Extensions that can automatically derive classes**
+  * `{-# LANGUAGE GeneralizedNewtypeDeriving #-}`
+  * `{-# LANGUAGE DeriveFunctor #-}`
+  * `{-# LANGUAGE DeriveFoldable #-}`
+  * `{-# LANGUAGE DeriveTraversable #-}`
+  * `{-# LANGUAGE RecordWildCards #-}`
+  * `{-# LANGUAGE DeriveGeneric #-}`
+    > Based on GHC.Generics for deriving classes not in Base. Can be used by
+      **import GHC.Generics**
+  * `{-# LANGUAGE DeriveAnyClass #-}`
+  * `{-# LANGUAGE DeriveDataTypeable #-}`
+  * `{-# LANGUAGE StandaloneDeriving #-}`
+    > Using this allows one to derive instances for types defined in other
+      modules with **instance Show a => Show (List a)**
 
 [Other Extensions](https://www.reddit.com/r/haskell/comments/2z248l/language_extensions/)
 
@@ -57,11 +83,14 @@
 # Learning Titbits
 * Studying other peoples code teaches more than simply reading and practicing
   by yourself.
+* A [defacto](https://github.com/chemouna/HaskellResources) collection of
+  haskell resources
 
 # Best practices
 * With Haskell, because of its type system refactoring is a breeze. So when
   writing code, always get a quick, dirty version that simply works. And then
   refactor to hearts content. Quantity triumphs any initial attempts at quality.
+* Beware of premature abstraction or optimization
 * Prefer to import libraries as qualified. Typically this is just considered
   good practice for business logic libraries, it makes it easier to locate the
   source of symbol definitions. It is recommended to focus on the following two
@@ -72,22 +101,17 @@
   ```
 
 # Values with Types with Kinds with Sorts
-
 In Haskell, all values have a type. For example,
-
 ```haskell
 intnum :: Int
 intnum = 3
 ```
-
 The `Int` above has **Kind** `*`. In other words it is a fully applied type.
 
 Now consider,
-
 ```haskell
 data Either a b = Left a | Right b
 ```
-
 `Either` has kind `Either -> * -> * -> *`. Meaning it takes two more types, to
 return a fully applied type. So basically, `Either` is a type constructor that
 takes two types as parameters and returns a new type. This is just a function at
@@ -97,15 +121,13 @@ the type level.
 > kind, and its (value) constructors to be type constructors.
 
 What that means is that, if we have a type like so,
-
 ```haskell
 data Nat = Ze | Su Nat
 ```
-
 then `DataKinds` gives us the following.
 
-* Nat is promoted to a Kind
-* Ze and Su are promoted to types
+* `Nat` is promoted to a Kind
+* `Ze` and `Su` are promoted to types
 
 In other words, the `Ze` and `Su Nat` that existed at the value level have now
 moved to the type level. And `Nat` which existed at the type level has now
@@ -115,15 +137,12 @@ In other words, all the suitable terms have been promoted one level higher.
 
 # Monomorphic Restriction
 For example, in the code
-
 ```haskell
 f xs = (len, len)
   where len = genericLength xs
 ```
-
 the type of genericLength is `Num a => [b] -> a`. So in the above case, since
 `f` has no type signature, it is inferred as,
-
 ```haskell
 f :: Num t => [b] -> (t, t)
 ```
@@ -138,7 +157,6 @@ f :: (Num t1, Num t2) => [b] -> (t1, t2)
 But when we do that, `len` will have to be computed twice since Haskell has no
 type casting. So without the `NoMonomorphismRestriction`, the compiler will
 throw the error,
-
 ```
 Could not deduce (b ~ c)
 from the context (Num b, Num c)
