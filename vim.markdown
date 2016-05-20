@@ -1,3 +1,14 @@
+# Making/Opening Vim sessions
+If you want to save a session of your open buffers, tabs, markers and other
+settings, you can issue the following:
+```
+mksession session.vim
+```
+You can open your session using:
+```
+vim -S session.vim
+```
+
 # Yanking to register. Pasting from register or clipboard
 To yank to a register try `"kyy`. This will yank the current line to the `k`
 register. To paste from `k` register you can use `"kp`. You can also paste from
