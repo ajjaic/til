@@ -80,11 +80,21 @@ This is a summary of pointers presented in the following video
 
 [Extensions that are good, bad and ugly](https://stackoverflow.com/questions/10845179/which-haskell-ghc-extensions-should-users-use-avoid?lq=1)
 
-# Learning Titbits
+# Learning Titbits and Resources
 * Studying other peoples code teaches more than simply reading and practicing
   by yourself.
 * A [defacto](https://github.com/chemouna/HaskellResources) collection of
   haskell resources
+* Haskell related [news](haskellnews.org/grouped) from various sources like
+  github, reddit, stackoverflow and a few others
+* The haskell [ecosystem](https://github.com/Gabriel439/post-rfc/blob/master/sotu.md)
+  by **Gabrial Gonzalez**. This documents the domains in which haskell is well suited
+  and any available libraries for use in that domain. And this is his
+  [blog](http://www.haskellforall.com/).
+* The one and only [what I wish I knew about haskell](http://dev.stephendiehl.com/hask/#haskell)
+  by **Stephen Diehl**
+* A set of recommended [libraries](http://haskelliseasy.readthedocs.io/en/latest/)
+  by **Chris Done**
 
 # Best practices
 * With Haskell, because of its type system refactoring is a breeze. So when
