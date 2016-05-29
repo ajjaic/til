@@ -94,7 +94,7 @@ This is a summary of pointers presented in the following video
 * The one and only [what I wish I knew about haskell](http://dev.stephendiehl.com/hask/#haskell)
   by **Stephen Diehl**
 * A set of recommended [libraries](http://haskelliseasy.readthedocs.io/en/latest/)
-  by **Chris Done**
+  by **Chris Allen**
 
 # Best practices
 * With Haskell, because of its type system refactoring is a breeze. So when
