@@ -111,6 +111,11 @@ This is a summary of pointers presented in the following video
   ```
 
 # Values with Types with Kinds with Sorts
+The first thing to remember here is that `*` is its own kind. It does not
+mean `any type`. `*` is just another kind like `Symbol` or `Nat`. Although,
+the kind `*` is represented with a character instead of a word. So the kind
+`*` means the set of `all fully applied types`
+
 In Haskell, all values have a type. For example,
 ```haskell
 intnum :: Int
