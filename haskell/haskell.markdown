@@ -1,3 +1,18 @@
+# Dependency graphs with Stack and Graphviz
+We can generate dependency graphs for a package or your own project with any
+of the following commands,
+
+* stack dot | dot -Tpng -o wreq.png
+* stack dot --external | dot -Tpng -o wreq.png
+* stack dot --no-include-base --external --depth 1 | dot -Tpng -o wreq.png
+* stack dot --external --prune base,lens,wreq-examples,http-client,aeson,tls,http-client-tls,exceptions | dot -Tpng -o wreq_pruned.png
+
+If graphviz is not available, install with,
+```
+sudo apt-get install graphviz
+```
+on ubuntu
+
 # Haskell Mistakes - Jasper Van der Jeugt
 This is a summary of pointers presented in the following video
 [source](https://www.youtube.com/watch?v=S3WGPuqfBLg)

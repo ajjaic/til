@@ -1,3 +1,16 @@
+# Adding/Removing user from group
+This is tested to work on ubuntu.
+Adding a user to a group:
+
+```bash
+$ sudo adduser user group
+```
+
+Removing a user from a group:
+```bash
+sudo deluser user group
+```
+
 # Bind Mounts
 A bind mount is an alternate view of a directory tree. Classically, mounting
 creates a view of a storage device as a directory tree. A bind mount instead
@@ -152,7 +165,7 @@ your timezone with the following command:
 $ dpkg-reconfigure tzdata
 ```
 
-# Upgrading Ubuntu
+# Upgrading Ubuntu to a New Release
 
 I recently discovered that my Linode box was running a fairly old version of
 Ubuntu. Because it is a remote box that I SSH into, there is no graphical
