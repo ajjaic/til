@@ -1,3 +1,7 @@
+# User group membership
+To get a list of groups to which the user belongs to, you can try `id` at the
+command prompt
+
 # Adding/Removing user from group
 This is tested to work on ubuntu.
 Adding a user to a group:
