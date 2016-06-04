@@ -1,3 +1,12 @@
+# Forward port on interface to another IP address
+`iptables` is the defacto command line tool for creating routing rules on a
+linux system. For example, to forward all connections on port 80 on the `eth0`
+interface to 10.0.3.143:80 you can use,
+
+```bash
+$ iptables -t nat -A PREROUTING -i eth0 -p tcp --dport 80 -j DNAT --to 10.0.3.143:80
+```
+
 # User group membership
 To get a list of groups to which the user belongs to, you can try `id` at the
 command prompt
