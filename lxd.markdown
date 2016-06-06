@@ -18,6 +18,13 @@
   Same for other normal users in the container.
 * Communication between LXD and clients is via SSL/TLS.
 * All the containers are stored in `/var/lib/lxc`
+* A host folder can be shared with multiple containers
+* Even container folders can be shared with other containers
+* Containers can make use of kernal modules. To allow a container to make use of
+  a kernal module, it needs to be first loaded on the host.
+* LXD allows device passthrough
+* Data can be copied from host to a running container and vice versa just like
+  a normal filesystem transfer.
 
 # Container components
 A typical container is simply represented by a folder in the host file system.
@@ -46,6 +53,7 @@ Example if we were to create a container for hosting a wordpress blog then,
   /var/www /var/www bind,create=dir
   ```
   will mount the host `/var/www` into container at `/var/www`
+* The same host folder can be mounted in multiple containers to share data
 
 It is possible to mount folders in one container into another container. So it's
 possible theoretically for one container to act as a data container with the
@@ -53,3 +61,6 @@ rest of the containers mounting directories from the data container. For
 simplicity, it is also possible for each container's data to be stored within
 itself. Increasing or decreasing the containers size depending on the
 requirements.
+
+# LXD Overview
+![Container Architecture](file:///home/adas/Documents/til/resources/lxc-vs-baremetal.png)
