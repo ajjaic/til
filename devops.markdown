@@ -1,3 +1,18 @@
+# Network Bridges
+A network bridge is like a virtual switch that is created on a host. One of
+their uses is to enable VM's and containers to have access to the network and to
+the wider internet. There are 2 main types of bridges,
+
+* Host Bridge
+  > The containers/VMs are directly connected to the host network and appear
+    and behave as other physical machines on your network. In other words
+    the host and containers/VMs are on the same network.
+* NAT Bridge
+  > In this case, the host and containers/VMs are on different networks. And
+    network of the containers/VMs is private. So if the containers/VMs need
+    access to nodes outside the host, they will have to communicate via the
+    host.
+
 # SSH into docker containers with Public Key
 
 To `SSH` into docker containers, an ssh server must be running on the container.
