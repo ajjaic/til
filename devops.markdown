@@ -132,7 +132,7 @@ in the address bar, then this is a 3rd party cookie.
 * Such cookies will be transmitted to any domain with the same TLD
 
 ## Zombie cookie
-* Cookies that persist inspite of being manually deleted.
+* Cookies that persist in spite of being manually deleted.
 * This is done by some client side script that recreates the cookie from info
 stored in multiple locations like Flash local storage, html5 storage or other
 client-side storage locations.
