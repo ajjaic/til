@@ -35,7 +35,7 @@ All the containers are stored in `/var/lib/lxc`.
 * character/block/network device
 * a set of profiles from which the container inherits above mentioned config
   options
-* properties such as container architecture, persistant or not and name
+* properties such as container architecture, persistent or not and name
 * runtime state
 * If `btrfs` is used as the underlying filesystem, each container is
   automatically created in a `btrfs sub-volume`.

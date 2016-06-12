@@ -761,7 +761,7 @@ well as blank lines at the end of a file.
 * `git add [file]`
  * Snapshots the file in preparation for versioning
 * `git add .`
- * Add all modified files to be commited
+ * Add all modified files to be committed
 * `git add '*.txt'`
  * Add only certain files
 * `git add –patch filename.x (or -p for short)`
