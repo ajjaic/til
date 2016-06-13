@@ -847,7 +847,7 @@ well as blank lines at the end of a file.
 ## Review history
 * `git log`
  * Lists version history for the current branch
-* `git log –follow [file]`
+* `git log -–follow [file]`
  * Lists version history for a file, including renames
 * `git log –pretty=format:"%h %s" –graph`
  * Pretty commit view, you can customize it as much as you want
