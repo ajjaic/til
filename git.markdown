@@ -1,3 +1,18 @@
+# Reference commits with `~`
+In git we can use `HEAD` to refer to the tip of the branch or in other words the
+latest commit in the branch. Similarly `HEAD~1` can refer to the parent of the
+branch tip. And `HEAD~4` can refer to the 4th commit behind the tip.
+
+Using this syntax for referencing commits can be used with any of git's sub
+commands. For instance,
+
+```
+$ git diff HEAD~3 HEAD
+```
+
+will get the diff from 3 commits behind the tip of the branch to the tip of the
+branch
+
 # All commits where particular line in file changed
 If you want to find all the commits where a particular line in a file has
 changed, use
@@ -502,11 +517,6 @@ Date: Mon Dec 21 15:50:20 2015 -0600
 By using `:/` followed by some text, git will attempt to find the most
 recent commit whose commit message matches the text. As I alluded to, regex
 can be used in the text.
-
-See `$ man gitrevisions` for more details and other ways to reference
-commits.
-
-[Source](https://twitter.com/jamesfublo/status/678906346335428608)
 
 # Renaming A Branch
 
