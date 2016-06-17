@@ -1,4 +1,20 @@
-# LXD
+# Installing and configuring LXD with ZFS Loop file
+* Install zfs with `sudo apt-get install zfsutils-linux`
+* Configure lxd with `sudo lxd init`
+* Choose `zfs` as the storage backend
+* Choose `no` when asked to if you want to use existing block device
+* Choose a size for the zfs loop file
+* Choose whether you want the lxd daemon to be available over the network. In
+  this case, you can choose `no`
+* Choose `yes` to configure the lxd bridge.
+* Setup an IPv4 subnet by choosing the subnet Gateway, Network mask and DHCP
+  range
+* And finally choose `Yes` for NAT'ing the traffic
+* If you want IPv6 connectivity for your containers you can proceed to setup
+  the IPv6 subnet
+* Add user to the `lxd` group
+
+# What is LXD
 * LXD is a container hypervisor.
 * Can run on any host as a daemon
 * This daemon manages containers in that host. It can create, destroy, modify
