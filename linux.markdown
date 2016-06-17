@@ -16,13 +16,19 @@ This is tested to work on ubuntu.
 Adding a user to a group:
 
 ```bash
-$ sudo adduser user group
+$ adduser user group
 ```
+or
+```bash
+# usermod -a -G sudo user
+```
+as root.
 
 Removing a user from a group:
 ```bash
 sudo deluser user group
 ```
+as root.
 
 # Bind Mounts
 A bind mount is an alternate view of a directory tree. Classically, mounting

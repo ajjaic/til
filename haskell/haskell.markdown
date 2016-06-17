@@ -90,6 +90,12 @@ This is a summary of pointers presented in the following video
   * `{-# LANGUAGE StandaloneDeriving #-}`
     > Using this allows one to derive instances for types defined in other
       modules with **instance Show a => Show (List a)**
+    > It allows one to derive very specific instances.
+      Ex: if you have a type like so `Id a` you can create a very specific
+          instance for it with `deriving instance Show (Id Int)`. Now whenever
+          you have an `Id Int`, this instance is used. The reason this is
+          required is because you cannot create a very specific instance like
+          that using the normal `deriving` syntax.
 
 [Other Extensions](https://www.reddit.com/r/haskell/comments/2z248l/language_extensions/)
 
