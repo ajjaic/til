@@ -1,3 +1,13 @@
+# Renaming multiple files
+```bash
+$ rename 's/.abc$/.edefg/' *.abc
+```
+
+To rename files recursively,
+```bash
+$ find /path/to/root/folder -type f -name '*.abc' -print0 | xargs -0 rename 's/.abc$/.edefg/'
+```
+
 # Forward port on interface to another IP address
 `iptables` is the defacto command line tool for creating routing rules on a
 linux system. For example, to forward all connections on port 80 on the `eth0`
