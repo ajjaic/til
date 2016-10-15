@@ -90,9 +90,10 @@ $ cat /etc/hosts
 ```
 Change the second line based on following pattern,
 ```
-127.0.0.1 <hostname>.<domainname> <hostname>
+127.0.0.1 <hostname>.<domainname>.<tld> <hostname>
 ```
-to set the hostname and domainname and consequently the fqdn
+and move it to the beginning of the file so that it is the first line in the
+file. If not the FQDN may not be registered
 
 # Mounting/Unmounting an NFS share on the client
 
